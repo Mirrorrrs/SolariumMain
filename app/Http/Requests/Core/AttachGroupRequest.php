@@ -2,15 +2,11 @@
 
 namespace App\Http\Requests\Core;
 
-
-use App\Rules\Core\LoginRule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class Login extends FormRequest
+class AttachGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,17 +26,16 @@ class Login extends FormRequest
     public function rules()
     {
         return [
-            "login" =>[ "required", new LoginRule],
-            "password" => "required",
-            "agent"=>"required|min:5"
+            "users"=>["required_without:user","json"],
+            "user"=>["required_without:users"],
+            "groups"=>["required_without:group","json"],
+            "group"=>["required_without:groups"],
+
         ];
     }
 
-
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json($validator->errors()));
+        return new HttpResponseException(response()->json($validator->errors()));
     }
-
-
 }

@@ -27,7 +27,8 @@ class RegistrationExcelRequest extends FormRequest
     {
         return [
             "table"=>"required|mimes:xlsx,ods,csv",
-            "organization_id"=>"required|exists:organizations,id"
+            "organization_id"=>"required|exists:organizations,id",
+            "group_id"=>"required|exists:groups,id"
         ];
     }
 

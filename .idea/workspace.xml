@@ -2,8 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daf08e6c-6ed6-4fe9-9301-c470269ad29a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/ApiConfig.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/permissions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SolariumMain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SolariumMain.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Core/AuthorizationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Core/AuthorizationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Core/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Core/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/GroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Core/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Core/Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Core/RegistrationExcelRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Core/RegistrationExcelRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Permission.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_25_000000_create_account_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_25_000000_create_account_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_02_161800_create_pay_tables.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +42,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -152,6 +178,7 @@
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
       <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lmL3jJ90GVaxjXogihSLFMhz1I" />
@@ -170,6 +197,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\SolariumMain" />
       <recent name="$PROJECT_DIR$/routes" />
       <recent name="$PROJECT_DIR$/database" />
       <recent name="$PROJECT_DIR$/app" />
@@ -191,6 +219,12 @@
       <updated>1608197128027</updated>
       <workItem from="1608197132300" duration="547000" />
       <workItem from="1608197715087" duration="774000" />
+      <workItem from="1610515168001" duration="627000" />
+      <workItem from="1610613416853" duration="2615000" />
+      <workItem from="1610689689489" duration="2305000" />
+      <workItem from="1610714410550" duration="1007000" />
+      <workItem from="1612521537500" duration="9085000" />
+      <workItem from="1613033029677" duration="1396000" />
     </task>
     <servers />
   </component>
@@ -207,5 +241,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

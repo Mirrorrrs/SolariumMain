@@ -51,30 +51,20 @@ class User extends Authenticatable
     protected $hidden = ['password'];
     protected $with = ['info', 'organization'];
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
 
     public function organization()
     {
         return $this->belongsTo(Organization::class);
     }
 
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class);
-    }
 
     public function groups()
     {
-        return $this->belongsToMany(Group::class);
+        return $this->belongsTo(Group::class);
     }
 
-    public function payUser()
-    {
-        return $this->hasOne(\App\Models\Pay\User::class, "id", "id");
-
+    public function school_class(){
+        return $this->hasOne(SchoolClass::class,"class_teacher_id","id");
     }
 
     public function info()
@@ -91,15 +81,26 @@ class User extends Authenticatable
     }
 
 
-    public static  function createUserWithRelations($login,$password,$org_id,$row)
+    public static  function createUserWithRelations($login,$password,$org_id,$row,$group_id)
     {
+
+        if(SchoolClass::where("group",$row->get("group"))->where("subgroup",$row->get("group_number"))->exists()){
+            $school_class_id=SchoolClass::where(["group"=>$row->get("group"),"subgroup"=>$row->get("group_number")])->first()->id;
+        }else{
+            $school_class =  SchoolClass::create(["group"=>$row->get("group"),"subgroup"=>$row->get("group_number")]);
+            $school_class_id = $school_class->id;
+        }
 
 
         $user = User::create([
             "username" => $login,
             "password" => $password,
             "organization_id" => $org_id,
+            "school_class_id"=>$school_class_id,
+            "group_id"=>$group_id
         ]);
+
+
 
 
         $user->info()->save(UserInformation::create([
@@ -107,9 +108,7 @@ class User extends Authenticatable
             "firstname" => $row->get("firstname"),
             "middlename" => $row->get("middlename"),
             "lastname" => $row->get("lastname"),
-            "group"=>$row->get("group"),
-            "subgroup"=>$row->get("group_number")
-
+            "medical_policy"=>$row->get("policy")
         ]));
 
         return $user;

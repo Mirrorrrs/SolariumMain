@@ -48,16 +48,21 @@ class RegistrationController extends Controller
         $data = Excel::toCollection(new ExcelUserDataImport(), $request->file('table'));
         $responseTable = collect();
         foreach ($data as $table) {
-            $row_number = 0;
-            foreach ($table as $row) {
+            $row_number = 1;
+            foreach ($table->splice(1) as $row) {
                 $row_number++;
+                $policy = $row->get(12);
+                if(!isset($policy)){
+                     continue;
+                }
+                $group_group_num = collect(explode(".",$row->get(2)));
                 $row = collect([
-                    "firstname" => $row->get(1),
-                    "middlename" => $row->get(2),
-                    "lastname" => $row->get(0),
-                    "group" => $row->get(3),
-                    "group_number" => $row->get(4),
-                    "custom_login" => $row->get(5),
+                    "firstname" => $row->get(4),
+                    "middlename" => $row->get(5),
+                    "lastname" => $row->get(3),
+                    "group" => $group_group_num->get(0),
+                    "group_number" => $group_group_num->get(1),
+                    "policy"=>$row->get(12)
                 ])->map(function ($el) {
                     return trim($el);
                 });
@@ -68,21 +73,16 @@ class RegistrationController extends Controller
                     "lastname" => ["required", "regex:/^[А-ЯЁ][а-яё]+$/ium"],
                     "group" => ["required", "regex:/^([1-9А-Я]|[1-9А-Я][0-9А-Я]){1,}$/ium"],
                     "group_number" => ["required", "regex:/^([1-9А-Я]|[1-9А-Я][0-9А-Я]){1,}$/ium"],
-                    "login" => ["regex:/^[A-Za-z]{5,}$/ium"],
                 ]);
                 if ($validator->fails()) {
                     throw new HttpResponseException(response()->json(new ErrorResource(["bad.information.given:" . $row_number])));
                 } else {
                     $unhashedPassword = Str::random(8);
                     $password = Hash::make($unhashedPassword);
-                    if (!empty($row->get("custom_login")) && User::whereUsername($row->get("custom_login"))->doesntExist()) {
-                        $login = $row->get("custom_login");
-                    } else {
-                        $login = $this->createUsername($row);
-                    }
+                    $login = $this->createUsername($row);
                 }
 
-                User::createUserWithRelations($login,$password,$request->get("organization_id"),$row);
+                User::createUserWithRelations($login,$password,$request->get("organization_id"),$row,$request->get("group_id"));
 
                 $responseTable->add([
                     "userNames" => $row->get("lastname") . " " . $row->get("firstname") . " " . $row->get("middlename"),
