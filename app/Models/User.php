@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     protected $guarded = [];
     protected $hidden = ['password'];
-    protected $with = ['info', 'organization'];
+    protected $with = ['info', 'organization',"school_class"];
 
 
     public function organization()
@@ -64,7 +64,7 @@ class User extends Authenticatable
     }
 
     public function school_class(){
-        return $this->hasOne(SchoolClass::class,"class_teacher_id","id");
+        return $this->belongsTo(SchoolClass::class,"school_class_id","id");
     }
 
     public function info()

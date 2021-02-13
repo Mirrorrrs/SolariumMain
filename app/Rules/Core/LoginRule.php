@@ -2,6 +2,7 @@
 
 namespace App\Rules\Core;
 
+use App\Http\Resources\Core\ErrorResource;
 use App\Models\Organization;
 use Illuminate\Contracts\Validation\Rule;
 
@@ -27,6 +28,9 @@ class LoginRule implements Rule
     public function passes($attribute, $value)
     {
         $value = explode("@",$value);
+        if(count($value)<2){
+            return false;
+        }
         $org = Organization::whereNamespace($value[1])->first();
         if(!$org)
             return false;

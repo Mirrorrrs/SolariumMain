@@ -14,6 +14,6 @@ class SchoolClass extends Model
     public $timestamps = false;
 
     public function class_teacher(){
-        return $this->belongsTo(User::class,"id","class_teacher_id");
+        return $this->hasMany(User::class,"id","school_class_id");
     }
 }

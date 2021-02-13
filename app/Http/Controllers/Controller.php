@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Core\GetUserResource;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,6 +15,6 @@ class Controller extends BaseController
 
     public function getUser(Request $request)
     {
-        return $request->user();
+        return response()->json(new GetUserResource(["user"=>$request->user()]));
     }
 }

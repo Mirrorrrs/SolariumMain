@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daf08e6c-6ed6-4fe9-9301-c470269ad29a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/permissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SolariumMain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SolariumMain.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Core/AuthorizationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Core/AuthorizationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Core/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Core/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/GroupController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Core/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Core/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Core/RegistrationExcelRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Core/RegistrationExcelRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Permission.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SchoolClassController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/SchoolClassController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Core/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Core/LoginRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Core/ErrorResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Core/ErrorResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Core/LoginResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Core/LoginResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SchoolClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SchoolClass.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_25_000000_create_account_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_25_000000_create_account_tables.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_02_161800_create_pay_tables.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Rules/Core/LoginRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/Core/LoginRule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,6 +192,10 @@
       <recent name="$PROJECT_DIR$/database" />
       <recent name="$PROJECT_DIR$/app" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\SolariumMain\app\Http\Controllers\OrgManagement" />
+      <recent name="C:\OpenServer\domains\SolariumMain\app\Http\Resources\Core" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -225,6 +219,9 @@
       <workItem from="1610714410550" duration="1007000" />
       <workItem from="1612521537500" duration="9085000" />
       <workItem from="1613033029677" duration="1396000" />
+      <workItem from="1613040008485" duration="615000" />
+      <workItem from="1613144365905" duration="3398000" />
+      <workItem from="1613199611273" duration="2105000" />
     </task>
     <servers />
   </component>
