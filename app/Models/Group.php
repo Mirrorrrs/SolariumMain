@@ -38,18 +38,24 @@ class Group extends Model
     protected $guarded = [];
 
 
-    public static function checkPermission($mask, $permission)
+    public static function checkPermissions($mask)
     {
+        $perms =  collect(config("permissions"));
+        $perm_keys = collect(config("permissions"))->keys();
         $mask = decbin($mask);
-        $role = collect(config("permissions"))->get($permission);
-        if (($mask & (1 << $role))) {
-            return true;
+        $arr = collect();
+
+        foreach ($perm_keys as $key){
+            $role = $perms->get($key);
+            if (($mask & (1 << $role))) {
+                return $arr->push($key);
+            }
         }
-        return false;
+        return $arr;
     }
 
     public function users()
     {
-        return $this->HasMany(User::class);
+        return $this->HasMany(User::class,"id","group_id");
     }
 }

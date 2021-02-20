@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="daf08e6c-6ed6-4fe9-9301-c470269ad29a" name="Default Changelist" comment="">
+    <list default="true" id="daf08e6c-6ed6-4fe9-9301-c470269ad29a" name="Default Changelist" comment="Some new resources">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.rnd" beforeDir="false" afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Core/AuthorizationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Core/AuthorizationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SchoolClassController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/SchoolClassController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Core/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Core/LoginRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Core/ErrorResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Core/ErrorResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Core/LoginResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Core/LoginResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/SchoolClassController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrgManagement/SchoolClassController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Group.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/SchoolClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SchoolClass.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/Core/LoginRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/Core/LoginRule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/permissions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,6 +182,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -221,8 +221,22 @@
       <workItem from="1613033029677" duration="1396000" />
       <workItem from="1613040008485" duration="615000" />
       <workItem from="1613144365905" duration="3398000" />
-      <workItem from="1613199611273" duration="2105000" />
+      <workItem from="1613199611273" duration="2382000" />
+      <workItem from="1613234805086" duration="597000" />
+      <workItem from="1613538669117" duration="4643000" />
+      <workItem from="1613562501878" duration="71000" />
+      <workItem from="1613562594650" duration="8626000" />
+      <workItem from="1613714799817" duration="1548000" />
+      <workItem from="1613732593963" duration="883000" />
     </task>
+    <task id="LOCAL-00001" summary="Some new resources">
+      <created>1613204032624</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1613204032624</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,5 +253,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Some new resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some new resources" />
   </component>
 </project>

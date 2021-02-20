@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     protected $guarded = [];
     protected $hidden = ['password'];
-    protected $with = ['info', 'organization',"school_class"];
+    protected $with = ['info', 'organization',"school_class","groups"];
 
 
     public function organization()
@@ -60,11 +60,17 @@ class User extends Authenticatable
 
     public function groups()
     {
-        return $this->belongsTo(Group::class);
+        return $this->belongsTo(Group::class,"group_id","id");
     }
 
     public function school_class(){
         return $this->belongsTo(SchoolClass::class,"school_class_id","id");
+    }
+
+    public function guarded_class()
+    {
+        return $this->hasOne(SchoolClass::class,"class_teacher_id","id");
+
     }
 
     public function info()
@@ -83,33 +89,62 @@ class User extends Authenticatable
 
     public static  function createUserWithRelations($login,$password,$org_id,$row,$group_id)
     {
-
-        if(SchoolClass::where("group",$row->get("group"))->where("subgroup",$row->get("group_number"))->exists()){
-            $school_class_id=SchoolClass::where(["group"=>$row->get("group"),"subgroup"=>$row->get("group_number")])->first()->id;
-        }else{
-            $school_class =  SchoolClass::create(["group"=>$row->get("group"),"subgroup"=>$row->get("group_number")]);
-            $school_class_id = $school_class->id;
+        $user = null;
+        $user_permissions = Group::checkPermissions(Group::find($group_id)->permissions);
+        if($user_permissions->contains("teacher")){
+            $user = User::create([
+                "username" => $login,
+                "password" => $password,
+                "organization_id" => $org_id,
+                "school_class_id"=>null,
+                "group_id"=>$group_id
+            ]);
+            $user->info()->save(UserInformation::create([
+                "id" => $user->id,
+                "firstname" => $row->get("firstname"),
+                "middlename" => $row->get("middlename"),
+                "lastname" => $row->get("lastname"),
+                "medical_policy"=>$row->get("policy")
+            ]));
         }
 
 
-        $user = User::create([
-            "username" => $login,
-            "password" => $password,
-            "organization_id" => $org_id,
-            "school_class_id"=>$school_class_id,
-            "group_id"=>$group_id
-        ]);
+        if(SchoolClass::where("group",$row->get("group"))->where("subgroup",$row->get("group_number"))->exists()){
+            $school_class=SchoolClass::where(["group"=>$row->get("group"),"subgroup"=>$row->get("group_number")])->first();
+            $school_class_id=$school_class->id;
+            if ($user_permissions->contains("teacher")){
+                $school_class->class_teacher()->associate($user)->save();
+            }
+        }else{
+            $school_class =  SchoolClass::create(["group"=>$row->get("group"),"subgroup"=>$row->get("group_number")]);
+            if ($user_permissions->contains("teacher")){
+               $user->guarded_class()->save($school_class);
+            }
+            $school_class_id = $school_class->id;
+        }
+
+        if(!$user_permissions->contains("teacher")){
+            $user = User::create([
+                "username" => $login,
+                "password" => $password,
+                "organization_id" => $org_id,
+                "school_class_id"=>$school_class_id,
+                "group_id"=>$group_id
+            ]);
+            $user->info()->save(UserInformation::create([
+                "id" => $user->id,
+                "firstname" => $row->get("firstname"),
+                "middlename" => $row->get("middlename"),
+                "lastname" => $row->get("lastname"),
+                "medical_policy"=>$row->get("policy")
+            ]));
+        }
 
 
 
 
-        $user->info()->save(UserInformation::create([
-            "id" => $user->id,
-            "firstname" => $row->get("firstname"),
-            "middlename" => $row->get("middlename"),
-            "lastname" => $row->get("lastname"),
-            "medical_policy"=>$row->get("policy")
-        ]));
+
+
 
         return $user;
     }

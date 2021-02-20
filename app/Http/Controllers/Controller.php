@@ -15,6 +15,10 @@ class Controller extends BaseController
 
     public function getUser(Request $request)
     {
+        $user = $request->user();
+        $class = $user->guarded_class;
+        $user = collect($user);
+        $user->put("guarded_class",$class);
         return response()->json(new GetUserResource(["user"=>$request->user()]));
     }
 }

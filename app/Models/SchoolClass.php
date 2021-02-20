@@ -13,7 +13,11 @@ class SchoolClass extends Model
 
     public $timestamps = false;
 
+    public function students(){
+        return $this->hasMany(User::class,"school_class_id","id");
+    }
+
     public function class_teacher(){
-        return $this->hasMany(User::class,"id","school_class_id");
+        return $this->belongsTo(User::class,"class_teacher_id","id");
     }
 }

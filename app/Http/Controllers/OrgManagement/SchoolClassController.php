@@ -3,84 +3,46 @@
 namespace App\Http\Controllers\OrgManagement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Core\ErrorResource;
+use App\Http\Resources\Core\SchoolClassResource;
+use App\Models\Group;
 use App\Models\SchoolClass;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class SchoolClassController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function class_get(Request $request)
     {
-        //
-    }
+        $id = $request->school_class_id;
+        $user = $request->user();
+        $perms = Group::checkPermissions($user->groups()->first()->permissions);
+        if ($perms->contains("teacher")) {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+                if((isset($id) && $user->school_class_id == $id)||(!isset($id))){
+                    $class = $user->guarded_class;
+                    $dt = collect();
+                    $dt->put("students",$class->students);
+                    $dt->put("class_teacher", $class->class_teacher);
+                    return response()->json(new SchoolClassResource($dt));
+                }else{
+                    return response()->json(new ErrorResource("no.access"),413);
+                }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SchoolClass  $schoolClass
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SchoolClass $schoolClass)
-    {
-        //
-    }
+        }
+        if ($perms->intersect(collect(["admin", "med_stuff"]))->count() >= 1) {
+            if(isset($id)){
+                $class = SchoolClass::find($id);
+                $dt = collect();
+                $dt->students = $class->students;
+                $dt->class_teacher=$class->class_teacher;
+                return response()->json(new SchoolClassResource($dt));
+            }else{
+                return response()->json(new ErrorResource("no.information.given"),413);
+            }
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SchoolClass  $schoolClass
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SchoolClass $schoolClass)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SchoolClass  $schoolClass
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SchoolClass $schoolClass)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SchoolClass  $schoolClass
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SchoolClass $schoolClass)
-    {
-        //
     }
 }

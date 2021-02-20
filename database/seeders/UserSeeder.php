@@ -32,9 +32,17 @@ class UserSeeder extends Seeder
         Group::create([
             "name"=>"student",
             "organization_id" => $org->id,
-            "human_name"=>"Fuckin i=diot",
+            "human_name"=>"Ученик",
             "permissions"=>1<<collect(config("permissions"))->get("student"),
-            "description"=>"Fuckin i=diot"
+            "description"=>"Ученик"
+        ]);
+
+        Group::create([
+            "name"=>"teacher",
+            "organization_id" => $org->id,
+            "human_name"=>"Учитель",
+            "permissions"=>1<<collect(config("permissions"))->get("teacher"),
+            "description"=>"Учитель"
         ]);
     }
 }
