@@ -14,7 +14,9 @@ class SchoolClassController extends Controller
 {
     public function class_get(Request $request)
     {
-        $id = $request->school_class_id;
+        if(collect($request)->has("school_class_id")){
+            $id=$request->school_class_id;
+        }
         $user = $request->user();
         $perms = Group::checkPermissions($user->groups()->first()->permissions);
         if ($perms->contains("teacher")) {

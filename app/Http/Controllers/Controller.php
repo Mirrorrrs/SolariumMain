@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Core\GetUserResource;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,10 +16,15 @@ class Controller extends BaseController
 
     public function getUser(Request $request)
     {
-        $user = $request->user();
+        if(isset($request->user_id)){
+            $user = User::where("id",$request->user_id)->first();
+        }else{
+            $user = $request->user();
+        }
         $class = $user->guarded_class;
         $user = collect($user);
         $user->put("guarded_class",$class);
-        return response()->json(new GetUserResource(["user"=>$request->user()]));
+        return response()->json(new GetUserResource(["user"=>$user]));
+
     }
 }
